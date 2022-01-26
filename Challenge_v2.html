@@ -1,0 +1,79 @@
+<meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" href="styles.css">
+<body>
+<h1>Encriptador</h1>
+<br>
+<h2><b>Codigo Secreto</b></h2>
+<br><br>
+<div>
+    <input/ id="campoEncriptar">
+    <button id="enterEncriptar">Encriptar</button>
+</div>
+
+<div>
+    <input  id="campoDesencriptar">
+    <button id="enterDesencriptar">Desencriptar</button>
+</div>
+
+<br><br>
+
+<textarea type= "readonly "id="result">Aquí aparecerá el resultado de la operación</textarea>
+
+<br><br>
+
+<button id=copiar onclick="portapapeles()">Copiar</button>
+
+<script>
+    
+    'use strict';
+    function enviarEncriptar(){
+
+       const mensaje = document.querySelector("#campoEncriptar").value;//***ESTO NO SE TOCA
+       
+       const salida= (mensaje).toLowerCase().replace('i','imes').replace('e','enter').replace('a','ai').replace('o','ober').replace('u','ufat');///****ESTO NO SE TOCA
+            document.querySelector('#result').value=salida;///*****ESTO NO SE TOCA
+            document.querySelector("#campoencriptar").value="";  
+    
+    }
+
+    'use strict';
+    function enviarDesencriptar(){
+
+       const mensajeEncriptado = document.querySelector("#campoDesencriptar").value;//***ESTO NO SE TOCA
+       
+       const entrada= (mensajeEncriptado).toLowerCase().replace('ai','a').replace('enter','e').replace('imes','i').replace('ober','o').replace('ufat','u');///****ESTO NO SE TOCA
+            document.querySelector('#result').value=entrada;///*****ESTO NO SE TOCA
+            document.querySelector("#campodesencriptar").value="";
+       
+    }
+
+
+    var buttonOut= document.querySelector("#enterEncriptar");
+    buttonOut.onclick = enviarEncriptar;
+
+    var buttonIn= document.querySelector("#enterDesencriptar");
+    buttonIn.onclick = enviarDesencriptar;
+
+
+    function portapapeles() {
+    var portapapeles=true;
+    var contenido = document.getElementById('result');
+    
+    contenido.select();
+    document.execCommand('copy');
+
+    alert("Copiado!");
+    var portapapeles=false;
+    if(portapapeles==false){
+        document.getElementById('result').value="";
+    
+    }
+
+}
+    
+
+
+
+</script>
+
+</body>
